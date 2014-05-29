@@ -10,6 +10,13 @@ platforms:
   - name: centos-6.5
 
 suites:
-  - name: default
+  - name: bootstrap
     run_list:
-    attributes:
+      - 'recipe[blp-bcpc::bootstrap]'
+  - name: headnode
+    run_list:
+      - 'recipe[blp-bcpc::headnode]'
+  - name: worknode
+    run_list:
+      - 'recipe[blp-bcpc::worknode]'
+      
