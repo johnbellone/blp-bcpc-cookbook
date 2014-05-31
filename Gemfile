@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 3.1'
+gem 'berkshelf'
 gem 'chef-sugar'
 gem 'chef-rewind'
 gem 'rake'
