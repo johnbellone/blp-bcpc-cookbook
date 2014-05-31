@@ -4,4 +4,4 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-override[:resolver][:nameservers] = ['8.8.8.8', '8.8.8.4']
+override[:resolver][:nameservers] = ['8.8.8.8', '8.8.4.4']
