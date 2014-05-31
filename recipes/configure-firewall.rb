@@ -2,7 +2,7 @@
 # Cookbook Name:: blp-bcpc
 # Recipe:: configure-firewall
 #
-# Copyright (C) 2013-2014 Bloomberg Finance L.P.
+# Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 include_recipe 'chef-sugar'
 

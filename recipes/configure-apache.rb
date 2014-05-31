@@ -2,7 +2,7 @@
 # Cookbook Name:: blp-bcpc
 # Recipe:: configure-apache
 #
-# Copyright (C) 2013-2014 Bloomberg Finance L.P.
+# Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 node.default[:apache][:listen_ports] = %w(80 443)
 
