@@ -4,16 +4,21 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'chef-sugar'
+include_recipe 'chef-sugar::default'
 
-node[:bcpc][:packages][:common].each { |pkg| package pkg }
-node[:bcpc][:packages][:debug].each { |pkg| package pkg }
-
-include_recipe 'blp-bcpc::configure-redhat' if redhat?
+include_recipe 'blp-bcpc::configure-redhat' if rhel?
 include_recipe 'blp-bcpc::configure-ubuntu' if ubuntu?
 
-include_recipe 'ntp'
-include_recipe 'resolver'
-include_recipe 'percona::package_repo'
-include_recipe 'chef-client::delete-validation'
-include_recipe 'chef-client::config'
+if rhel?
+  include_recipe 'yum::default'
+  include_recipe 'yum-epel::default'
+  include_recipe 'ceph::rpm'
+end
+
+if ubuntu?
+  include_recipe 'ubuntu::default'
+  include_recipe 'ceph::apt'
+end
+
+include_recipe 'ntp::default'
+include_recipe 'resolver::default'
