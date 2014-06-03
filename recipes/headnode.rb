@@ -8,3 +8,4 @@
 node.tag('bcpc.headnode')
 
 include_recipe 'blp-bcpc::worknode'
+include_recipe 'blp-bcpc::configure-pdns'
