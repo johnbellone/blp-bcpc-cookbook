@@ -6,8 +6,10 @@ description      'Installs/Configures blp-bcpc - Bloomberg Clustered Private Clo
 long_description 'Installs/Configures blp-bcpc - Bloomberg Clustered Private Cloud'
 version          '0.1.0'
 
-supports 'redhat', '~> 6.5'
-supports 'centos', '~> 6.5'
+%w(centos redhat).each do |name|
+  supports name, '~> 6.5'
+end
+
 supports 'ubuntu', '= 12.04'
 supports 'ubuntu', '= 14.04'
 
