@@ -4,9 +4,8 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'rabbitmq'
 
-management_ip = node[:bcpc][:management][:ip]
+management_ip = node['bcpc']['management']['ip']
 
 haproxy_lb 'rabbitmq' do
   bind ':5672'
@@ -19,3 +18,5 @@ haproxy_lb 'rabbitmq' do
     'option' => 'tcpka'
   })
 end
+
+include_recipe 'rabbitmq::default'

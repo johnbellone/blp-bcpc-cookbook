@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: blp-bcpc
-# Attribute:: ceph
+# Recipe:: configure-logstash
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #

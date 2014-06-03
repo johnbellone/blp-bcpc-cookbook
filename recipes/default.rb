@@ -6,9 +6,6 @@
 #
 include_recipe 'chef-sugar::default'
 
-include_recipe 'blp-bcpc::configure-redhat' if rhel?
-include_recipe 'blp-bcpc::configure-ubuntu' if ubuntu?
-
 if rhel?
   include_recipe 'yum::default'
   include_recipe 'yum-epel::default'
@@ -22,3 +19,4 @@ end
 
 include_recipe 'ntp::default'
 include_recipe 'resolver::default'
+include_recipe 'selinux::disabled'

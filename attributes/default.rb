@@ -4,4 +4,6 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-override[:resolver][:nameservers] = ['8.8.8.8', '8.8.4.4']
+
+override['chef-server']['configuration']['webui']['enabled'] = false
+override['resolver']['nameservers'] = ['8.8.8.8', '8.8.4.4']
