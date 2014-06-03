@@ -37,7 +37,7 @@ if debian?
   end
 end
 
-if redhat?
+if rhel?
   include_recipe 'iptables'
 
   iptables_rule 'dhcp'

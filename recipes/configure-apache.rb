@@ -11,4 +11,4 @@ include_recipe 'apache2'
 include_recipe 'apache2::logrotate'
 include_recipe 'apache2::mod_fastcgi'
 include_recipe 'apache2::mod_rewrite'
-include_recipe 'apache2::iptables' if redhat?
+include_recipe 'apache2::iptables' if rhel?
