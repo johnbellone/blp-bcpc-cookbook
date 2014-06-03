@@ -10,4 +10,4 @@ include_recipe 'percona::package_repo'
 include_recipe 'chef-client::delete-validation'
 include_recipe 'chef-client::config'
 
-node.tag('bcpc-worknode')
+node.tag('bcpc.worknode')
