@@ -6,4 +6,6 @@
 #
 
 node.tag('bcpc.bootstrap')
+
 include_recipe 'blp-bcpc::default'
+include_recipe 'blp-bcpc::configure-cobbler'
