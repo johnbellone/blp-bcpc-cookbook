@@ -6,7 +6,7 @@ rescue LoadError
 end
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'opscode-ubuntu-14.04'
+  config.vm.box = 'opscode-ubuntu-12.04'
 
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = true
@@ -18,7 +18,7 @@ Vagrant.configure('2') do |config|
       vb.customize ['modifyvm', :id, "--#{name}", 'on']
     end
 
-    override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box'
+    override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box'
   end
 
   config.vm.provider :vmware_fusion do |vx, override|
@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
     vx.vmx['memsize'] = ENV.fetch('BCPC_VM_MEM', 1536)
     vx.vmx['numvpus'] = ENV.fetch('BCPC_VM_CPU', 1)
 
-    override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_ubuntu-14.04_chef-provisionerless.box'
+    override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_ubuntu-12.04_chef-provisionerless.box'
   end
 
   config.berkshelf.enabled = true
