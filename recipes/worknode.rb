@@ -10,6 +10,8 @@ node.tag('bcpc.worknode')
 include_recipe 'blp-bcpc::default'
 include_recipe 'blp-bcpc::configure-ceph'
 include_recipe 'blp-bcpc::configure-chef'
+include_recipe 'blp-bcpc::configure-ldap'
 include_recipe 'blp-bcpc::configure-logstash'
 include_recipe 'blp-bcpc::configure-postgresql'
+include_recipe 'blp-bcpc::configure-ssh'
 include_recipe 'blp-bcpc::configure-zabbix'
