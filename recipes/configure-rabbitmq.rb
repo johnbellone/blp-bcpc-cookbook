@@ -5,7 +5,7 @@
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 
-management_ip = node['bcpc']['management']['ip']
+management_ip = node[:bcpc][:management][:ip]
 
 haproxy_lb 'rabbitmq' do
   bind ':5672'

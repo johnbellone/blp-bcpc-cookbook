@@ -8,7 +8,8 @@
 include_recipe 'chef-sugar::default'
 
 if tagged?('bcpc.headnode')
-  node.default['zabbix']['server']['install'] = true
+  node.default[:zabbix][:server][:install] = true
+
   include_recipe 'zabbix::server'
 end
 

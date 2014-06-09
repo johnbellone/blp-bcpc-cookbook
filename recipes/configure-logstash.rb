@@ -7,11 +7,11 @@
 
 include_recipe 'chef-sugar::default'
 
-node.default['logstash']['elasticsearch_query'] = 'tag:bcpc.headnode'
-node.default['logstash']['graphite_query'] = 'tag:bcpc.headnode'
+node.default[:logstash][:elasticsearch_query] = 'tag:bcpc.headnode'
+node.default[:logstash][:graphite_query] = 'tag:bcpc.headnode'
 
 if tagged?('bcpc.headnode')
-  node.default['logstash']['install_rabbitmq'] = false
+  node.default[:logstash][:install_rabbitmq] = false
 
   include_recipe 'logstash::server'
 else

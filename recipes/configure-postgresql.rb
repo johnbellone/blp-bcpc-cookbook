@@ -7,8 +7,8 @@
 
 include_recipe 'chef-sugar::default'
 
-node.default['postgresql']['enable_pgdg_apt'] = true
-node.default['postgresql']['enable_pgdg_yum'] = true
+node.default[:postgresql][:enable_pgdg_apt] = true
+node.default[:postgresql][:enable_pgdg_yum] = true
 
 if tagged?('bcpc.headnode')
   include_recipe 'postgresql::server'
