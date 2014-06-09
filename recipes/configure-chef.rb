@@ -8,6 +8,12 @@
 include_recipe 'chef-sugar::default'
 
 if tagged?('bcpc.headnode')
+  node.override['chef-server']['configuration'] = {
+    webui: {
+      enabled: false
+    }
+  }
+
   include_recipe 'chef-server::default'
 else
   include_recipe 'chef-client::config'
