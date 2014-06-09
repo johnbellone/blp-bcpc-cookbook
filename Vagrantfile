@@ -1,18 +1,14 @@
-begin
-  require 'dotenv'
-  Dotenv.load File.expand_path('../.env', __FILE__)
-rescue LoadError
-  puts 'Dotenv failed to load.'
-end
-
 Vagrant.configure('2') do |config|
+  config.omnibus.chef_version = :latest if Vagrant.has_plugin?('vagrant-omnibus')
+  config.berkshelf.enabled = true if Vagrant.has_plugin?('vagrant-berkshelf')
+
   config.vm.box = 'opscode-ubuntu-12.04'
 
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = true
     vb.customize ['modifyvm', :id, '--nictype2', '82543GC']
     vb.customize ['modifyvm', :id, '--memory', ENV.fetch('BCPC_VM_MEM', 1536)]
-    vb.customize ['modifyvm', :id, '--memory', ENV.fetch('BCPC_VM_CPU', 1)]
+    vb.customize ['modifyvm', :id, '--cpus', ENV.fetch('BCPC_VM_CPU', 1)]
 
     %w(largepages nestedpaging vtxvpid hwvirtex ioapic).each do |name|
       vb.customize ['modifyvm', :id, "--#{name}", 'on']
@@ -28,8 +24,6 @@ Vagrant.configure('2') do |config|
 
     override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_ubuntu-12.04_chef-provisionerless.box'
   end
-
-  config.berkshelf.enabled = true
 
   config.vm.define :bootstrap, primary: true do |guest|
     guest.vm.hostname = 'bcpc-bootstrap'
