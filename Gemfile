@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'berkshelf'
 gem 'chef-sugar'
 gem 'chef-rewind'
+gem 'chef-vault'
 gem 'rake'
 
 group :integration, :test do
