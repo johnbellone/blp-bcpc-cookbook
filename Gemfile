@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf'
+gem 'cheffish'
 gem 'chef-sugar'
 gem 'chef-rewind'
 gem 'chef-vault'

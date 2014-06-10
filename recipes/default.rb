@@ -5,6 +5,7 @@
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 include_recipe 'chef-sugar::default'
+include_recipe 'chef-vault::default'
 
 if rhel?
   include_recipe 'yum::default'
@@ -20,3 +21,6 @@ end
 include_recipe 'ntp::default'
 include_recipe 'resolver::default'
 include_recipe 'selinux::disabled'
+
+chef_gem 'cheffish'
+require 'cheffish'
