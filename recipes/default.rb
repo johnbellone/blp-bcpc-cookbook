@@ -19,8 +19,6 @@ if ubuntu?
 end
 
 include_recipe 'ntp::default'
-include_recipe 'resolver::default'
 include_recipe 'selinux::disabled'
 
-chef_gem 'cheffish'
-require 'cheffish'
+require_chef_gem 'cheffish'
