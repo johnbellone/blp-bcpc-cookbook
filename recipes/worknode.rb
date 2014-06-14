@@ -16,10 +16,3 @@ role 'blp-bcpc.worknode' do
   recipe 'blp-bcpc::configure-ssh'
   recipe 'blp-bcpc::configure-zabbix'
 end
-
-machine 'worknode' do
-  role 'blp-bcpc.worknode'
-  tag 'bcpc.worknode'
-
-  not_if { tagged? 'bcpc.headnode' }
-end
