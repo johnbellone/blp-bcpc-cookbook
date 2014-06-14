@@ -1,10 +1,9 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: configure-postgresql
+# Recipe:: configure-psql
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-
 include_recipe 'chef-sugar::default'
 
 node.default[:postgresql][:enable_pgdg_apt] = true
