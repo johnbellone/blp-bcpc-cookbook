@@ -12,6 +12,5 @@ gem 'rake'
 group :integration, :test do
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
-  gem 'kitchen-metal'
   gem 'serverspec'
 end

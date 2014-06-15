@@ -6,5 +6,3 @@
 #
 include_recipe 'chef-sugar::default'
 include_recipe 'chef-vault::default'
-
-require_chef_gem 'cheffish'
