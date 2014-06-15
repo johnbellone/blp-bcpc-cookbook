@@ -56,7 +56,11 @@ Vagrant.configure('2') do |config|
     }
 
     guest.vm.provision :chef_solo do |chef|
-      chef.run_list = ['blp-bcpc::bootnode']
+      chef.run_list = [
+        'recipe[blp-bcpc::default]',
+        'role[blp.bcpc-bootnode]'
+      ]
+
       chef.json = {
         bcpc: {
           bootstrap: {

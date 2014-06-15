@@ -5,14 +5,12 @@
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 include_recipe 'blp-bcpc::default'
+include_recipe 'blp-bcpc::base'
 
-role 'blp-bcpc.worknode' do
-  recipe 'blp-bcpc::default'
-  recipe 'blp-bcpc::configure-ceph'
-  recipe 'blp-bcpc::configure-chef'
-  recipe 'blp-bcpc::configure-ldap'
-  recipe 'blp-bcpc::configure-logstash'
-  recipe 'blp-bcpc::configure-psql'
-  recipe 'blp-bcpc::configure-ssh'
-  recipe 'blp-bcpc::configure-zabbix'
-end
+include_recipe 'blp-bcpc::configure-ceph'
+include_recipe 'blp-bcpc::configure-chef'
+include_recipe 'blp-bcpc::configure-ldap'
+include_recipe 'blp-bcpc::configure-logstash'
+include_recipe 'blp-bcpc::configure-psql'
+include_recipe 'blp-bcpc::configure-ssh'
+include_recipe 'blp-bcpc::configure-zabbix'

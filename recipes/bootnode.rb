@@ -5,9 +5,7 @@
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 include_recipe 'blp-bcpc::default'
+include_recipe 'blp-bcpc::base'
 
-role 'blp-bcpc.bootnode' do
-  recipe 'blp-bcpc::default'
-  recipe 'cobbler::default'
-  recipe 'cobbler::web'
-end
+include_recipe 'cobbler::default'
+include_recipe 'cobbler::web'
