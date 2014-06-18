@@ -1,6 +1,6 @@
 source 'https://api.berkshelf.com'
 
-cookbook 'cobbler', github: 'johnbellone/cobbler-cookbook'
+cookbook 'cobblerd', github: 'johnbellone/cobbler-cookbook'
 cookbook 'openstack-block-storage', github: 'stackforge/cookbook-openstack-block-storage', tag: 'stable/grizzly'
 cookbook 'openstack-common', github: 'stackforge/cookbook-openstack-common', tag: 'stable/grizzly'
 cookbook 'openstack-dashboard', github: 'stackforge/cookbook-openstack-dashboard', tag: 'stable/grizzly'

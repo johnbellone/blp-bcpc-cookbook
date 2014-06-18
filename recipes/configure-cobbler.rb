@@ -4,22 +4,30 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
+include_recipe 'blp-bcpc::default'
 
-include_recipe 'chef-sugar::default'
+# Configure isc-dhcp-server for the bootnode.
+node.set[:dhcp][:use_bags] = false
+node.set[:dhcp][:parameters]['next-server'] = '127.0.0.1'
+include_recipe 'dhcp::server'
 
-return unless tagged?('bcpc.bootstrap')
+dhcp_subnet node[:blp][:bcpc][:bootnode][:dhcp_subnet] do
+  range node[:blp][:bcpc][:bootnode][:dhcp_range]
+  notifies :restart, 'service[dhcp]', :delayed
+end
 
-include_recipe 'cobbler::default'
-include_recipe 'cobbler::web'
+include_recipe 'cobblerd::centos'
+include_recipe 'cobblerd::ubuntu'
+include_recipe 'cobblerd::web'
 
-chef_data_bag 'configs'
-chef_vault_secret 'cobbler' do
-  data_bag 'configs'
-  raw_data({
-    cobbler: {
-      root_password: node[:bcpc][:config][:password],
+template '/etc/cobbler/dhcp.template' do
+  source 'dhcp.template.erb'
+  mode 0644
+  notifies :restart, 'service[cobbler]', :delayed
+end
 
-    }
-  })
-  action :create_if_missing
+template '/etc/cobbler/settings' do
+  source 'cobbler.settings.erb'
+  mode 0644
+  notifies :restart, 'service[cobbler]', :delayed
 end

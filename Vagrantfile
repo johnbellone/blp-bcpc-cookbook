@@ -1,10 +1,21 @@
 # Most of this configuration was taken from observing the bootstrap process
 # that the chef-bcpc project goes through.
 Vagrant.configure('2') do |config|
-  config.omnibus.chef_version = :latest if Vagrant.has_plugin?('vagrant-omnibus')
-  config.berkshelf.enabled = true if Vagrant.has_plugin?('vagrant-berkshelf')
-
   config.vm.box = ENV.fetch('VAGRANT_BOX', 'opscode-ubuntu-12.04')
+
+  if Vagrant.has_plugin?('vagrant-omnibus')
+    config.omnibus.chef_version = :latest
+  end
+
+  if Vagrant.has_plugin?('vagrant-berkshelf')
+    config.berkshelf.enabled = true
+  end
+
+  # Configure the cached packages to be shared between all instances of the
+  # same box that is used here.
+  if Vagrant.has_plugin?('vagrant-cachier')
+    config.cache.scope = :box
+  end
 
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = true unless ENV['VAGRANT_HEADLESS']
@@ -25,7 +36,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provider :vmware_fusion do |vx, override|
-    vx.gui = true
+    vx.gui = true unless ENV['VAGRANT_HEADLESS']
     vx.vmx['memsize'] = ENV.fetch('BCPC_VM_MEM', 1536)
     vx.vmx['numvpus'] = ENV.fetch('BCPC_VM_CPU', 1)
 
@@ -36,6 +47,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.define :bootnode, primary: true do |guest|
     guest.vm.hostname = 'bcpc-bootnode'
+    guest.vm.network :forwarded_port, guest: 80, host: 8080
 
     guest.vm.network :private_network, {
       ip: '10.0.100.3',
@@ -57,15 +69,7 @@ Vagrant.configure('2') do |config|
 
     guest.vm.provision :chef_solo do |chef|
       chef.run_list = [ 'recipe[blp-bcpc::bootnode]' ]
-      chef.json = {
-        bcpc: {
-          bootstrap: {
-            cobbler: {
-              root_password: 'changeme'
-            }
-          }
-        }
-      }
+      chef.json = { }
     end
   end
 end
