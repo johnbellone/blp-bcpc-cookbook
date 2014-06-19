@@ -4,8 +4,7 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-
-include_recipe 'chef-sugar::default'
+include_recipe 'blp-bcpc::default'
 
 if tagged?('bcpc.headnode')
   node.override['chef-server']['configuration'] = {

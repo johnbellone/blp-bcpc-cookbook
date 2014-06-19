@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
+include_recipe 'blp-bcpc::default'
 
-node.default[:haproxy][:incoming_address] = node[:bcpc][:management][:ip]
-
+node.set[:haproxy][:incoming_address] = node[:blp][:bcpc][:management][:ip]
 include_recipe 'haproxy::default'

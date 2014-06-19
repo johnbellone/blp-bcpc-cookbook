@@ -4,8 +4,9 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
+include_recipe 'blp-bcpc::default'
 
-management_ip = node[:bcpc][:management][:ip]
+management_ip = node[:blp][:bcpc][:management][:ip]
 
 haproxy_lb 'rabbitmq' do
   bind ':5672'
