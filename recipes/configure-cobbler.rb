@@ -20,12 +20,6 @@ include_recipe 'cobblerd::centos'
 include_recipe 'cobblerd::ubuntu'
 include_recipe 'cobblerd::web'
 
-template '/etc/cobbler/dhcp.template' do
-  source 'dhcp.template.erb'
-  mode 0644
-  notifies :restart, 'service[cobbler]', :delayed
-end
-
 template '/etc/cobbler/settings' do
   source 'cobbler.settings.erb'
   mode 0644
