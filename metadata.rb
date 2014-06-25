@@ -1,13 +1,18 @@
 name             'blp-bcpc'
 maintainer       'Bloomberg Finance L.P.'
 maintainer_email 'jbellone@bloomberg.net'
-license          'Apache 2.0'
+license          'Apache v2.0'
 description      'Installs/Configures blp-bcpc - Bloomberg Clustered Private Cloud'
 long_description 'Installs/Configures blp-bcpc - Bloomberg Clustered Private Cloud'
 version          '0.1.0'
 
+recipe 'blp-bcpc::bootnode', 'Configure target as a BCPC bootstrap node.'
+recipe 'blp-bcpc::headnode', 'Configure target as a BCPC head node.'
+recipe 'blp-bcpc::worknode', 'Configure target as a BCPC work node.'
+
 %w(centos redhat).each do |name|
   supports name, '~> 6.5'
+  supports name, '~> 7.0'
 end
 
 supports 'ubuntu', '= 12.04'
