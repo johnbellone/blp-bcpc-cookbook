@@ -1,5 +1,9 @@
 blp-bcpc-cookbook
 =================
+![Release](http://img.shields.io/github/release/johnbellone/blp-bcpc-cookbook.svg)
+[![Build Status](http://img.shields.io/travis/johnbellone/blp-bcpc-cookbook.svg)][8]
+[![Code Coverage](http://img.shields.io/coveralls/johnbellone/blp-bcpc-cookbook.svg)][9]
+
 Configures nodes to deploy the [Bloomberg Clustered Private Cloud][1].
 
 This is a refactoring of [the original cookbook][1] which utilizes
@@ -23,3 +27,5 @@ configuration.
 [5]: http://virtualbox.org
 [6]: http://www.centos.org
 [7]: http://releases.ubuntu.com/12.04
+[8]: http://travis-ci.org/johnbellone/blp-bcpc-cookbook
+[9]: https://coveralls.io/r/johnbellone/blp-bcpc-cookbook
