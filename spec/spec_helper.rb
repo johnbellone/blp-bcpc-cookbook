@@ -33,12 +33,5 @@ end
 at_exit { ChefSpec::Coverage.report! }
 
 RSpec.shared_context 'recipe tests', type: :recipe do
-  let(:chef_run) { ChefSpec::Runner.new(node_attributes).converge(described_recipe) }
-
-  def node_attributes
-    {
-      platform: 'ubuntu',
-      version: '12.04'
-    }
-  end
+  let(:chef_run) { ChefSpec::Runner.new(platform: 'ubuntu', version: '12.04').converge(described_recipe) }
 end
