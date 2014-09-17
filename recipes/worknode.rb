@@ -6,10 +6,10 @@
 #
 include_recipe 'blp-bcpc::base'
 
-include_recipe 'blp-bcpc::configure-ceph'
-include_recipe 'blp-bcpc::configure-chef'
-include_recipe 'blp-bcpc::configure-ldap'
-include_recipe 'blp-bcpc::configure-logstash'
-include_recipe 'blp-bcpc::configure-psql'
-include_recipe 'blp-bcpc::configure-ssh'
-include_recipe 'blp-bcpc::configure-zabbix'
+include_recipe 'blp-bcpc::_ceph'
+include_recipe 'blp-bcpc::_chef'
+include_recipe 'blp-bcpc::_ldap'
+include_recipe 'blp-bcpc::_logstash'
+include_recipe 'blp-bcpc::_psql'
+include_recipe 'blp-bcpc::_ssh'
+include_recipe 'blp-bcpc::_zabbix'

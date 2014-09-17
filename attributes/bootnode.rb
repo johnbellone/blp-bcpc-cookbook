@@ -4,15 +4,17 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-default[:blp][:bcpc][:bootnode][:interface] = 'eth0'
-default[:blp][:bcpc][:bootnode][:pxe_interface] = 'eth1'
-default[:blp][:bcpc][:bootnode][:dhcp_subnet] = '10.0.100.0'
-default[:blp][:bcpc][:bootnode][:dhcp_range] = '10.0.100.14 10.0.100.250'
+default['blp']['bcpc']['bootnode'].tap do |bootnode|
+  bootnode['interface'] = 'eth0'
+  bootnode['pxe_interface'] = 'eth1'
+  bootnode['dhcp_subnet'] = '10.0.100.0'
+  bootnode['dhcp_range'] = '10.0.100.14 10.0.100.250'
 
-default[:bcpc][:bootnode][:vault][:bag_name] = 'configs'
-default[:bcpc][:bootnode][:vault][:bag_item] = 'bootnode'
-default[:bcpc][:bootnode][:vault][:admins] = []
-default[:bcpc][:bootnode][:vault][:search_query] = '*.*'
+  bootnode['vault']['bag_name'] = 'configs'
+  bootnode['vault']['bag_item'] = 'bootnode'
+  bootnode['vault']['admins'] = []
+  bootnode['vault']['search_query'] = '*.*'
 
-default[:bcpc][:bootnode][:cobbler][:dir] = '/var/lib/cobbler'
-default[:bcpc][:bootnode][:cobbler][:root_password] = 'password'
+  bootnode['cobbler']['dir'] = '/var/lib/cobbler'
+  bootnode['cobbler']['root_password'] = 'password'
+end

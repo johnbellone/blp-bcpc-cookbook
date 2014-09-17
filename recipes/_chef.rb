@@ -7,7 +7,7 @@
 include_recipe 'blp-bcpc::default'
 
 if tagged?('bcpc.headnode')
-  node.override['chef-server']['configuration'] = {
+  node.default['chef-server']['configuration'] = {
     webui: {
       enabled: false
     }

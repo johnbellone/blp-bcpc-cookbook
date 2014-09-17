@@ -1,5 +1,5 @@
-# Most of this configuration was taken from observing the bootstrap process
-# that the chef-bcpc project goes through.
+# Most of this configuration was taken from observing the bootstrap
+# process that the chef-bcpc project goes through.
 Vagrant.configure('2') do |config|
   config.vm.box = ENV.fetch('VAGRANT_BOX', 'opscode-ubuntu-12.04')
 
@@ -11,8 +11,8 @@ Vagrant.configure('2') do |config|
     config.berkshelf.enabled = true
   end
 
-  # Configure the cached packages to be shared between all instances of the
-  # same box that is used here.
+  # Configure the cached packages to be shared between all instances
+  # of the same box that is used here.
   if Vagrant.has_plugin?('vagrant-cachier')
     config.cache.scope = :box
   end
@@ -20,7 +20,8 @@ Vagrant.configure('2') do |config|
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = true unless ENV['VAGRANT_HEADLESS']
 
-    # Configure a baseline for the virtual machine(s) that are created here.
+    # Configure a baseline for the virtual machine(s) that are created
+    # here.
     vb.customize ['modifyvm', :id, '--nictype2', '82543GC']
     vb.customize ['modifyvm', :id, '--memory', ENV.fetch('BCPC_VM_MEM', 1536)]
     vb.customize ['modifyvm', :id, '--cpus', ENV.fetch('BCPC_VM_CPU', 1)]

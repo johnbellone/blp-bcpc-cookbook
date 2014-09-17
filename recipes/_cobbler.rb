@@ -7,12 +7,12 @@
 include_recipe 'blp-bcpc::default'
 
 # Configure isc-dhcp-server for the bootnode.
-node.set[:dhcp][:use_bags] = false
-node.set[:dhcp][:parameters]['next-server'] = '127.0.0.1'
+node.set['dhcp']['use_bags'] = false
+node.set['dhcp']['parameters']['next-server'] = '127.0.0.1'
 include_recipe 'dhcp::server'
 
-dhcp_subnet node[:blp][:bcpc][:bootnode][:dhcp_subnet] do
-  range node[:blp][:bcpc][:bootnode][:dhcp_range]
+dhcp_subnet node['blp']['bcpc']['bootnode']['dhcp_subnet'] do
+  range node['bcpc']['bcpc']['bootnode']['dhcp_range']
   notifies :restart, 'service[dhcp]', :delayed
 end
 
