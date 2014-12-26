@@ -1,32 +1,17 @@
-# Most of this configuration was taken from observing the bootstrap
-# process that the chef-bcpc project goes through.
 Vagrant.configure('2') do |config|
+  config.berkshelf.enabled = true
+  config.cache.scope = :box
+  config.omnibus.chef_version = :latest
+
   config.vm.box = ENV.fetch('VAGRANT_BOX', 'opscode-ubuntu-12.04')
-
-  if Vagrant.has_plugin?('vagrant-omnibus')
-    config.omnibus.chef_version = :latest
-  end
-
-  if Vagrant.has_plugin?('vagrant-berkshelf')
-    config.berkshelf.enabled = true
-  end
-
-  # Configure the cached packages to be shared between all instances
-  # of the same box that is used here.
-  if Vagrant.has_plugin?('vagrant-cachier')
-    config.cache.scope = :box
-  end
 
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = true unless ENV['VAGRANT_HEADLESS']
 
-    # Configure a baseline for the virtual machine(s) that are created
-    # here.
     vb.customize ['modifyvm', :id, '--nictype2', '82543GC']
     vb.customize ['modifyvm', :id, '--memory', ENV.fetch('BCPC_VM_MEM', 1536)]
     vb.customize ['modifyvm', :id, '--cpus', ENV.fetch('BCPC_VM_CPU', 1)]
 
-    # These may be setup by default but this is just in pedantic mode.
     %w(largepages nestedpaging vtxvpid hwvirtex ioapic).each do |name|
       vb.customize ['modifyvm', :id, "--#{name}", 'on']
     end
