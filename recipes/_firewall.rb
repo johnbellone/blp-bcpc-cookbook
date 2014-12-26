@@ -1,11 +1,9 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: configure-firewall
+# Recipe:: _firewall
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'blp-bcpc::default'
-
 if debian?
   include_recipe 'firewall'
 
@@ -22,7 +20,7 @@ if debian?
 
   firewall_rule 'dhcp' do
     protocol :udp
-    source node[:blp][:bcpc][:bootstrap][:pxe_interface]
+    source node['blp']['bcpc']['bootstrap']['pxe_interface']
     port 68
     dest_port 67
     action :allow
@@ -30,8 +28,8 @@ if debian?
 
   firewall_rule 'tftp' do
     protocol 'tftp'
-    source node[:blp][:bcpc][:bootstrap][:pxe_interface]
-    destination node[:blp][:bcpc][:bootstrap][:server]
+    source node['blp']['bcpc']['bootstrap']['pxe_interface']
+    destination node['blp']['bcpc']['bootstrap']['server']
     action :allow
   end
 end

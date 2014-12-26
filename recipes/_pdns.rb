@@ -1,7 +1,7 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: base
+# Recipe:: _psql
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'blp-bcpc::default'
+include_recipe 'pdns::authoritative'

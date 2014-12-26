@@ -1,4 +1,4 @@
-source 'https://api.berkshelf.com'
+source 'https://supermarket.chef.io'
 
 cookbook 'cobblerd', github: 'johnbellone/cobbler-cookbook'
 cookbook 'openstack-block-storage', github: 'stackforge/cookbook-openstack-block-storage', tag: 'stable/grizzly'

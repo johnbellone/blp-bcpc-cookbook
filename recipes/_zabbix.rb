@@ -1,11 +1,11 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: configure-zabbix
+# Recipe:: _zabbix
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
 if tagged?('bcpc.headnode')
-  node.default[:zabbix][:server][:install] = true
+  node.default['zabbic']['server']['install'] = true
 
   include_recipe 'zabbix::server'
 end

@@ -4,11 +4,10 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'blp-bcpc::default'
 
 # Configure isc-dhcp-server for the bootnode.
-node.set['dhcp']['use_bags'] = false
-node.set['dhcp']['parameters']['next-server'] = '127.0.0.1'
+node.default['dhcp']['use_bags'] = false
+node.default['dhcp']['parameters']['next-server'] = '127.0.0.1'
 include_recipe 'dhcp::server'
 
 dhcp_subnet node['blp']['bcpc']['bootnode']['dhcp_subnet'] do

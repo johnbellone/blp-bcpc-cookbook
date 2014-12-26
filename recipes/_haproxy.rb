@@ -1,10 +1,8 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: configure-haproxy
+# Recipe:: _haproxy
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'blp-bcpc::default'
-
-node.set[:haproxy][:incoming_address] = node[:blp][:bcpc][:management][:ip]
+node.default['haproxy']['incoming_address'] = node['blp']['bcpc']['management']['ip']
 include_recipe 'haproxy::default'

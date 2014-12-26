@@ -1,10 +1,10 @@
 #
 # Cookbook Name:: blp-bcpc
-# Recipe:: configure-rabbitmq
+# Recipe:: _rabbitmq
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-management_ip = node[:blp][:bcpc][:management][:ip]
+management_ip = node['blp']['bcpc']['management']['ip']
 
 haproxy_lb 'rabbitmq' do
   bind ':5672'

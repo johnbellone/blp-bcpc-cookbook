@@ -4,8 +4,6 @@
 #
 # Copyright (C) 2013, 2014 Bloomberg Finance L.P.
 #
-include_recipe 'blp-bcpc::default'
-
 if tagged?('bcpc.headnode')
   node.default['chef-server']['configuration'] = {
     webui: {
@@ -15,7 +13,8 @@ if tagged?('bcpc.headnode')
 
   include_recipe 'chef-server::default'
 else
-  include_recipe 'chef-client::config'
   include_recipe 'chef-client::default'
+  include_recipe 'chef-client::config'
+  include_recipe 'chef-client::cron'
   include_recipe 'chef-client::delete_validation'
 end
