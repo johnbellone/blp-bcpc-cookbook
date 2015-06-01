@@ -1,10 +1,10 @@
-blp-bcpc-cookbook
-=================
+# blp-bcpc-cookbook
 ![Release](http://img.shields.io/github/release/johnbellone/blp-bcpc-cookbook.svg)
 [![Build Status](http://img.shields.io/travis/johnbellone/blp-bcpc-cookbook.svg)][8]
 [![Code Coverage](http://img.shields.io/coveralls/johnbellone/blp-bcpc-cookbook.svg)][9]
 
-Configures nodes to deploy the [Bloomberg Clustered Private Cloud][1].
+Wrapper cookbook which installs and configures the
+[Bloomberg Clustered Private Cloud][1].
 
 This is a refactoring of [the original cookbook][1] which utilizes
 [test-kitchen][2], [Berkshelf][3] and community cookbooks for

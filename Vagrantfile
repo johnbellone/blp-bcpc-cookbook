@@ -1,6 +1,5 @@
 Vagrant.configure('2') do |config|
   config.berkshelf.enabled = true
-  config.cache.scope = :box
   config.omnibus.chef_version = :latest
 
   config.vm.box = ENV.fetch('VAGRANT_BOX', 'opscode-ubuntu-12.04')

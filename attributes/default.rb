@@ -1,8 +1,7 @@
 #
-# Cookbook Name:: blp-bcpc
-# Attribute:: default
-#
-# Copyright (C) 2013, 2014 Bloomberg Finance L.P.
+# Cookbook: blp-bcpc-cookbook
+# License: Apache 2.0
+# Copyright 2013-2015 Bloomberg Finance L.P.
 #
 default['blp']['bcpc'].tap do |config|
   config['domain_name'] = 'bcpc.example.com'

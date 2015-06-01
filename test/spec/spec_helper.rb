@@ -1,12 +1,14 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chefspec/cacher'
-require 'chefspec/server'
 require 'coveralls'
 
 Coveralls.wear!
 
 RSpec.configure do |config|
+  config.platform = 'ubuntu'
+  config.version = '14.04'
+
   config.color = true
   config.alias_example_group_to :describe_recipe, type: :recipe
 
@@ -33,5 +35,5 @@ end
 at_exit { ChefSpec::Coverage.report! }
 
 RSpec.shared_context 'recipe tests', type: :recipe do
-  let(:chef_run) { ChefSpec::Runner.new(platform: 'ubuntu', version: '12.04').converge(described_recipe) }
+  let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
 end

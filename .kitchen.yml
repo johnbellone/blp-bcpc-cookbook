@@ -4,18 +4,14 @@ driver:
 provisioner:
   name: chef_zero
 
-# Test all of the platforms that we support for this cookbook.   
+# Test all of the platforms that we support for this cookbook.
 platforms:
   - name: ubuntu-14.04
   - name: ubuntu-12.04
-  - name: centos-7.0
-  - name: centos-6.5
+  - name: centos-7.1
+  - name: centos-6.6
 
-# Each major component of the recipe should be tested independently.    
 suites:
-  - name: bootnode
-    run_list:
-      - 'recipe[blp-bcpc::bootnode]'
   - name: headnode
     run_list:
       - 'recipe[blp-bcpc::headnode]'
